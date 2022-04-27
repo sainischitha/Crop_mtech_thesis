@@ -1,0 +1,161 @@
+{% extends 'layout.html' %} {% block body %}
+
+<style>
+  html body {
+    background-color: rgb(206, 206, 228);
+  }
+</style>
+<!--Form Section-->
+<br /><br />
+<h2 style="text-align: center; margin: 0px; color: black">
+  <b>Get informed advice on crop damage</b>
+</h2>
+<br />
+
+<div
+  style="
+    width: 350px;
+    height: 40rem;
+    margin: 0px auto;
+    color: black;
+    border-radius: 25px;
+    padding: 10px 10px;
+  "
+>
+  <form method="POST" action="{{ url_for('fert_recommend') }}">
+    <div class="form-group">
+      <label for="Estimated Insects count" style="font-size: 17px"><b>Estimated Insects count</b></label>
+      <input
+        type="number"
+        class="form-control"
+        id="Estimated Insects count"
+        name="estimated Insects count"
+        placeholder="Enter the value (example:50)"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="Number_doses_week" style="font-size: 17px"
+        ><b>Number of doses per week</b></label
+      >
+      <input
+        type="number"
+        class="form-control"
+        id="Number_doses_week"
+        name="number_doses_week"
+        placeholder="Enter the value (example:5)"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="Number_week_used" style="font-size: 17px"><b>Number of weeks used</</b></label>
+      <input
+        type="number"
+        class="form-control"
+        id="Number_week_used"
+        name="number_week_used"
+        placeholder="Enter the value (example:50)"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+	<div class="form-group">
+      <label for="Number_week_quit" style="font-size: 17px"><b>Number of weeks quit</</b></label>
+      <input
+        type="number"
+        class="form-control"
+        id="Number_week_quit"
+        name="number_week_quit"
+        placeholder="Enter the value (example:50)"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+	<div class="form-group">
+      <label for="CropType" style="font-size: 17px"><b>Crop Type</</b></label>
+      <select
+        onchange="print_croptype('cropType', this.selectedIndex);"
+        id="ct"
+        name="ctt"
+        class="form-control"
+        style="font-weight: bold; color: black;"
+        
+        required
+      ></select>
+      <br />
+      <script language="javascript">
+        print_croptype("ct");
+      </script>
+	</div>
+   	<div class="form-group">
+      <label for="SoilType" style="font-size: 17px"><b>Soil Type</</b></label>
+      <select
+        onchange="print_soiltype('soilType', this.selectedIndex);"
+        id="st"
+        name="styp"
+        class="form-control"
+        style="font-weight: bold; color: black;"
+        
+        required
+      ></select>
+      <br />
+      <script language="javascript">
+        print_soiltype("st");
+      </script>
+	  </div>
+	<div class="form-group">
+      <label for="Pesticide" style="font-size: 17px"><b>Pesticide Used</</b></label>
+      <select
+        onchange="print_pesticide('pesticide', this.selectedIndex);"
+        id="pu"
+        name="put"
+        class="form-control"
+        style="font-weight: bold; color: black;"
+        
+        required
+      ></select>
+      <br />
+      <script language="javascript">
+        print_pesticide("pu");
+      </script>
+	  </div>
+	<div class="form-group">
+      <label for="Season" style="font-size: 17px"><b>Season</</b></label>
+      <select
+        onchange="print_newseason('season', this.selectedIndex);"
+        id="nss"
+        name="tstn"
+        class="form-control"
+        style="font-weight: bold; color: black;"
+        
+        required
+      ></select>
+      <br />
+      <script language="javascript">
+        print_newseason("nss");
+      </script>
+    </div>
+    
+
+    <div class="d-flex justify-content-center">
+      <button
+        type="submit"
+        class="btn btn-info"
+        style="
+          color: black;
+          font-weight: bold;
+          width: 130px;
+          height: 50px;
+          border-radius: 12px;
+          font-size: 21px;
+        "
+      >
+        Predict
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}
